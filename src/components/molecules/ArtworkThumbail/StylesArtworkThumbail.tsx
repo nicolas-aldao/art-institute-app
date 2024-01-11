@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledTitle = styled.Text`
-  text-align: center;
+  align-self: center;
   font-size: 14px;
   font-weight: 400;
+  max-width: 250px;
 `;
 
 export const StyledImage = styled.Image`

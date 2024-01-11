@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   FlatList,
   ScrollView,
   StyleSheet,
@@ -16,8 +17,9 @@ import {
   StyledStatusBar,
   StyledView,
 } from '../../../../AppStyles';
+import {FavoriteButton} from '../../atoms/FavoritesButton/index';
 
-export function HomeScreen() {
+export function HomeScreen({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
   const {data, isLoading} = useFetchArtworks();
 
@@ -28,6 +30,7 @@ export function HomeScreen() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <StyledSafeAreaView isDarkMode={isDarkMode}>
+        <FavoriteButton />
         {/* <StyledStatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}

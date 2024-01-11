@@ -10,6 +10,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './src/components/pages/Home/index';
 import {ArtworkDetailScreen} from './src/components/pages/ArtworkDetail/index';
+import {FavoritesScreen} from './src/components/pages/FavoritesScreen/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function App(): React.JSX.Element {
           options={{headerShown: false}}
         />
         <Stack.Screen name="ArtworkDetail" component={ArtworkDetailScreen} />
+        <Stack.Screen name="Favorites" component={FavoritesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
