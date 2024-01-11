@@ -23,8 +23,30 @@ function App(): React.JSX.Element {
           component={HomeScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="ArtworkDetail" component={ArtworkDetailScreen} />
-        <Stack.Screen name="Favorites" component={FavoritesScreen} />
+        <Stack.Screen
+          name="ArtworkDetail"
+          component={ArtworkDetailScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Favorites"
+          component={FavoritesScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+            headerTintColor: 'black',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
