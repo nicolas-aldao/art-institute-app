@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Text, StyleSheet, useColorScheme, View} from 'react-native';

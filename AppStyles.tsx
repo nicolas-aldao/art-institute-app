@@ -14,4 +14,5 @@ export const StyledSafeAreaView = styled.SafeAreaView`
 export const StyledView = styled.View`
   background-color: ${(props: {isDarkMode: boolean}) =>
     props.isDarkMode ? Colors.darker : Colors.lighter};
+  align-items: center;
 `;
