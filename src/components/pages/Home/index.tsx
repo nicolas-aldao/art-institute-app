@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useFetchArtworks} from '../../../hooks/useFetchArtworks';
+import {FavoriteButton} from '../../atoms/FavoritesButton/index';
+import {Header} from '../../molecules/Header/index';
 import {Section} from '../../molecules/Section/index';
 import {ArtworkThumbail} from '../../molecules/ArtworkThumbail/index';
 import {
@@ -17,11 +19,11 @@ import {
   StyledStatusBar,
   StyledView,
 } from '../../../../AppStyles';
-import {FavoriteButton} from '../../atoms/FavoritesButton/index';
 
 export function HomeScreen({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
   const {data, isLoading} = useFetchArtworks();
+  console.log('isLoading ', isLoading);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -37,23 +39,24 @@ export function HomeScreen({navigation}) {
         /> */}
         {/* <ScrollView
           contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}> */}
+        style={backgroundStyle}> */}
         <StyledView isDarkMode={isDarkMode}>
-          <Section title="Art Institute Of Chicago Catalog">
-            In this app you will see your favorite artworks
-          </Section>
-          <FlatList
-            data={data?.data}
-            renderItem={({item}) => {
-              return (
-                <ArtworkThumbail
-                  id={item.id}
-                  title={`${item.id} - ${item.title}`}
-                  imageUrl={`https://www.artic.edu/iiif/2/${item?.image_id}/full/843,/0/default.jpg`}
-                />
-              );
-            }}
-          />
+          <Header />
+          {isLoading && <Text>Loading...</Text>}
+          {data && (
+            <FlatList
+              data={data?.data}
+              renderItem={({item}) => {
+                return (
+                  <ArtworkThumbail
+                    id={item.id}
+                    title={`${item.id} - ${item.title}`}
+                    imageUrl={`https://www.artic.edu/iiif/2/${item?.image_id}/full/843,/0/default.jpg`}
+                  />
+                );
+              }}
+            />
+          )}
         </StyledView>
         {/* </ScrollView> */}
       </StyledSafeAreaView>

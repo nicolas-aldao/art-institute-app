@@ -13,6 +13,8 @@ export function ArtworkDetailScreen({route}) {
       <FullArtwork
         id={data?.data?.id}
         title={data?.data?.title}
+        author={data?.data?.artist_title}
+        description={data?.data?.medium_display}
         imageUrl={`https://www.artic.edu/iiif/2/${data?.data?.image_id}/full/843,/0/default.jpg`}
       />
     </View>

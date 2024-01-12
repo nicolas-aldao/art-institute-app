@@ -25,6 +25,7 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
       <StyledTitle numberOfLines={2} ellipsizeMode="tail">
         {title}
       </StyledTitle>
+
       <StyledImage
         source={{
           uri: imageUrl,

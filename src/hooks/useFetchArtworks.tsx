@@ -3,14 +3,14 @@ import {fetchArtworks} from '../services/artworks';
 
 export const useFetchArtworks = () => {
   const [data, setData] = useState<any[]>([]);
-  const [isFetching, setIsFetching] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchArtworks()
       .then((artworks: SetStateAction<any[]>) => setData(artworks))
       .catch((e: any) => console.log(e))
-      .finally(() => setIsFetching(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
-  return {data, isFetching};
+  return {data, isLoading};
 };

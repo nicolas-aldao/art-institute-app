@@ -35,8 +35,8 @@ export function Section({children, title}: SectionProps): React.JSX.Element {
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    margin: 8,
+    paddingHorizontal: 8,
   },
   sectionTitle: {
     fontSize: 24,
