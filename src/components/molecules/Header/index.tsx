@@ -1,6 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {Section} from '../Section/index';
 import {
   StyledHeaderContainer,
   StyledTitle,

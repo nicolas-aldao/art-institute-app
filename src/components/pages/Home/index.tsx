@@ -1,33 +1,18 @@
 import React from 'react';
-import {
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {ScrollView, Text, View, useColorScheme} from 'react-native';
 import {useFetchArtworks} from '../../../hooks/useFetchArtworks';
 import {FavoriteButton} from '../../atoms/FavoritesButton/index';
 import {Header} from '../../molecules/Header/index';
-import {Section} from '../../molecules/Section/index';
-import {ArtworkThumbail} from '../../molecules/ArtworkThumbail/index';
+import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';
 import {
   StyledSafeAreaView,
   StyledStatusBar,
   StyledView,
 } from '../../../../AppStyles';
 
-export function HomeScreen({navigation}) {
+export function HomeScreen() {
   const isDarkMode = useColorScheme() === 'dark';
   const {data, isLoading} = useFetchArtworks();
-  console.log('isLoading ', isLoading);
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -43,20 +28,7 @@ export function HomeScreen({navigation}) {
         <StyledView isDarkMode={isDarkMode}>
           <Header />
           {isLoading && <Text>Loading...</Text>}
-          {data && (
-            <FlatList
-              data={data?.data}
-              renderItem={({item}) => {
-                return (
-                  <ArtworkThumbail
-                    id={item.id}
-                    title={`${item.id} - ${item.title}`}
-                    imageUrl={`https://www.artic.edu/iiif/2/${item?.image_id}/full/843,/0/default.jpg`}
-                  />
-                );
-              }}
-            />
-          )}
+          {data && <ArtworkThumbnailList list={data} />}
         </StyledView>
         {/* </ScrollView> */}
       </StyledSafeAreaView>

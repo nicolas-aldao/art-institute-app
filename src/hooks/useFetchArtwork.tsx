@@ -8,7 +8,6 @@ export const useFetchArtwork = id => {
   useEffect(() => {
     fetchArtwork(id)
       .then((artwork: SetStateAction<any>) => setData(artwork))
-      .catch((e: any) => console.log(e))
       .finally(() => setIsFetching(false));
   }, []);
 

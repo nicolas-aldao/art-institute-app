@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import {
+  Button,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -7,6 +8,8 @@ import {
   Text,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {handleLike} from '../../../utils/handleLike';
+import {handleUnlike} from '../../../utils/handleUnlike';
 import {
   StyledImage,
   StyledTitle,
@@ -22,6 +25,7 @@ export type FullArtworkProps = {
   author: string;
   description: string;
   imageUrl: string;
+  isLiked: boolean;
 };
 
 export const FullArtwork: FC<FullArtworkProps> = ({
@@ -30,8 +34,14 @@ export const FullArtwork: FC<FullArtworkProps> = ({
   author,
   description,
   imageUrl,
+  isLiked,
 }) => {
+  const [liked, setLiked] = useState(isLiked);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setLiked(isLiked);
+  }, [isLiked]);
 
   const styles = StyleSheet.create({
     imageBackground: {
@@ -68,6 +78,25 @@ export const FullArtwork: FC<FullArtworkProps> = ({
       <ImageBackground source={{uri: imageUrl}} style={styles.imageBackground}>
         <View style={styles.innerContainer}></View>
       </ImageBackground>
+      {liked ? (
+        <Button
+          onPress={() => {
+            setLiked(false);
+            handleUnlike(id);
+          }}
+          title="Unlike"
+          color="#ab1934"
+        />
+      ) : (
+        <Button
+          onPress={() => {
+            setLiked(true);
+            handleLike(id);
+          }}
+          title="Likee"
+          color="#e7e3e3"
+        />
+      )}
     </>
     // </TouchableOpacity>
   );
