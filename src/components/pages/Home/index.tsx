@@ -13,7 +13,6 @@ import {
 export function HomeScreen() {
   const isDarkMode = useColorScheme() === 'dark';
   const {data, isLoading} = useFetchArtworks();
-
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <StyledSafeAreaView isDarkMode={isDarkMode}>

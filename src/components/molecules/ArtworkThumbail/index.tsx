@@ -1,8 +1,9 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Button, Text, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 import {handleLike} from '../../../utils/handleLike';
-import {handleUnlike} from '../../../utils/handleUnlike';
+import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
 import {StyledImage, StyledTitle} from './StylesArtworkThumbail';
 
 export type ArtworkThumbailProps = {
@@ -20,6 +21,11 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
 }) => {
   const [liked, setLiked] = useState(isLiked);
   const navigation = useNavigation();
+  const {likeArtwork, unlikeArtwork} = useHandleUnlike();
+
+  useEffect(() => {
+    setLiked(isLiked);
+  }, [isLiked]);
 
   return (
     <TouchableOpacity
@@ -38,23 +44,25 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
         }}
       />
       {liked ? (
-        <Button
+        <TouchableOpacity
           onPress={() => {
             setLiked(false);
-            handleUnlike(id);
-          }}
-          title="Unlike"
-          color="#ab1934"
-        />
+            unlikeArtwork(id);
+          }}>
+          <Text>
+            <Icon name="favorite" size={30} color="#900" />
+          </Text>
+        </TouchableOpacity>
       ) : (
-        <Button
+        <TouchableOpacity
           onPress={() => {
             setLiked(true);
-            handleLike(id);
-          }}
-          title="Like"
-          color="#e7e3e3"
-        />
+            likeArtwork(id);
+          }}>
+          <Text>
+            <Icon name="favorite-border" size={30} color="#900" />
+          </Text>
+        </TouchableOpacity>
       )}
     </TouchableOpacity>
   );

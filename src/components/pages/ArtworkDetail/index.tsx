@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Text, View} from 'react-native';
+import {View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {handleLike} from '../../../utils/handleLike';
-import {handleUnlike} from '../../../utils/handleUnlike';
 import {useFetchArtwork} from '../../../hooks/useFetchArtwork';
 import {FullArtwork} from '../../molecules/FullArtwork/index';
 
@@ -25,7 +23,6 @@ export function ArtworkDetailScreen({route}) {
 
   return (
     <View>
-      {/* <Text>{`Artwork Detail Screen ${id}`}</Text> */}
       <FullArtwork
         id={data?.data?.id}
         title={data?.data?.title}
@@ -34,7 +31,6 @@ export function ArtworkDetailScreen({route}) {
         imageUrl={`https://www.artic.edu/iiif/2/${data?.data?.image_id}/full/843,/0/default.jpg`}
         isLiked={likesArrayState?.includes(id)}
       />
-      {/* <Button title="Like" onPress={handleLike(id)} /> */}
     </View>
   );
 }

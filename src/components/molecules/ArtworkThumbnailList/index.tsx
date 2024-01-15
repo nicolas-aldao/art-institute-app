@@ -1,22 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
 import {ArtworkThumbail} from '../ArtworkThumbail/index';
+import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
 
 export const ArtworkThumbnailList = ({list}) => {
-  const [likesArrayState, setLikesArrayState] = useState('');
-
-  useEffect(() => {
-    let retrieveData = async () => {
-      try {
-        let stringLikes = await AsyncStorage.getItem('likesArray');
-        setLikesArrayState(stringLikes);
-      } catch (error) {
-        console.log('retrieveData', error);
-      }
-    };
-    retrieveData();
-  }, []);
+  const {likesArrayState} = useHandleUnlike();
 
   return (
     <FlatList
