@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {useFetchArtworksByIdsArray} from '../../../hooks/useFetchArtworksByIdsArray';
 import {StyledView, StyledTitle} from './StylesFavoritesScreen';
 import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';

@@ -1,36 +1,30 @@
 import React from 'react';
-import {ScrollView, Text, View, useColorScheme} from 'react-native';
+import {Text} from 'react-native';
 import {useFetchArtworks} from '../../../hooks/useFetchArtworks';
 import {FavoriteButton} from '../../atoms/FavoritesButton/index';
 import {Header} from '../../molecules/Header/index';
+import {ThumbailSkeletonList} from '../../skeletons/Lists/ThumbailSkeletonList/index';
 import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';
 import {
+  StyledContainerView,
   StyledSafeAreaView,
-  StyledStatusBar,
   StyledView,
-} from '../../../../AppStyles';
+} from './StylesHome';
 
 export function HomeScreen() {
-  const isDarkMode = useColorScheme() === 'dark';
   const {data, isLoading} = useFetchArtworks();
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <StyledSafeAreaView isDarkMode={isDarkMode}>
-        <FavoriteButton />
-        {/* <StyledStatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        /> */}
-        {/* <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}> */}
-        <StyledView isDarkMode={isDarkMode}>
-          <Header />
-          {isLoading && <Text>Loading...</Text>}
-          {data && <ArtworkThumbnailList list={data} />}
-        </StyledView>
-        {/* </ScrollView> */}
-      </StyledSafeAreaView>
-    </View>
+    <>
+      <StyledContainerView>
+        <StyledSafeAreaView>
+          <FavoriteButton />
+          <StyledView>
+            <Header />
+            {isLoading && <ThumbailSkeletonList />}
+            {data && <ArtworkThumbnailList list={data} />}
+          </StyledView>
+        </StyledSafeAreaView>
+      </StyledContainerView>
+    </>
   );
 }
