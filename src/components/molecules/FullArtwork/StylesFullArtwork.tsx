@@ -42,3 +42,7 @@ export const StyledView = styled.View`
   width: 100vw;
   height: 400px; */
 `;
+
+export const StyledButtonContainer = styled.View`
+  padding: 15px;
+`;

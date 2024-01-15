@@ -1,15 +1,16 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {useFetchArtworksByIdsArray} from '../../../hooks/useFetchArtworksByIdsArray';
+import {StyledView, StyledTitle} from './StylesFavoritesScreen';
 import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';
 
 export function FavoritesScreen() {
   const {data} = useFetchArtworksByIdsArray();
 
   return (
-    <View>
-      <Text>Favorites Screen</Text>
+    <StyledView>
+      <StyledTitle>Here you can see your favorites artworks :)</StyledTitle>
       {data && <ArtworkThumbnailList list={data} />}
-    </View>
+    </StyledView>
   );
 }

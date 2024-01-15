@@ -1,11 +1,21 @@
 import React, {FC, useState, useEffect} from 'react';
-import {Button, StyleSheet, View, ImageBackground} from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  View,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {COLORS} from '../../../constants';
 import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
 import {
   StyledTitle,
   StyledAuthor,
   StyledDescription,
   StyledTextContainer,
+  StyledButtonContainer,
 } from './StylesFullArtwork';
 
 export type FullArtworkProps = {
@@ -60,25 +70,29 @@ export const FullArtwork: FC<FullArtworkProps> = ({
       <ImageBackground source={{uri: imageUrl}} style={styles.imageBackground}>
         <View style={styles.innerContainer}></View>
       </ImageBackground>
-      {liked ? (
-        <Button
-          onPress={() => {
-            setLiked(false);
-            unlikeArtwork(id);
-          }}
-          title="Unlike"
-          color="#ab1934"
-        />
-      ) : (
-        <Button
-          onPress={() => {
-            setLiked(true);
-            likeArtwork(id);
-          }}
-          title="Likee"
-          color="#e7e3e3"
-        />
-      )}
+      <StyledButtonContainer>
+        {liked ? (
+          <TouchableOpacity
+            onPress={() => {
+              setLiked(false);
+              unlikeArtwork(id);
+            }}>
+            <Text>
+              <Icon name="favorite" size={30} color={COLORS.LIKE} />
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              setLiked(true);
+              likeArtwork(id);
+            }}>
+            <Text>
+              <Icon name="favorite-border" size={30} color={COLORS.LIKE} />
+            </Text>
+          </TouchableOpacity>
+        )}
+      </StyledButtonContainer>
     </>
   );
 };
