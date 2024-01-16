@@ -16,7 +16,6 @@ export const FavoriteButton = () => {
         }}>
         <Text>
           <Icon name="grade" size={60} color={COLORS.FAVORITES} />
-          {/* 🌝 */}
         </Text>
       </TouchableOpacity>
     </StyledView>

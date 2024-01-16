@@ -6,7 +6,7 @@ import {FullArtwork} from '../../molecules/FullArtwork/index';
 
 export function ArtworkDetailScreen({route}) {
   const {id} = route.params;
-  const {data, isLoading} = useFetchArtwork(id);
+  const {data} = useFetchArtwork(id);
   const [likesArrayState, setLikesArrayState] = useState('');
 
   useEffect(() => {

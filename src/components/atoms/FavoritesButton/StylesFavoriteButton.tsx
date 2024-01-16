@@ -6,7 +6,3 @@ export const StyledView = styled.View`
   right: 30px;
   z-index: 2;
 `;
-
-// export const StyledText = styled.Text`
-//   font-size: 50px;
-// `;
