@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 import {COLORS} from '../../../constants';
 import {handleLike} from '../../../utils/handleLike';
-import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
+import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
 import {
   StyledImage,
   StyledTitle,
@@ -27,7 +27,7 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
 }) => {
   const [liked, setLiked] = useState(isLiked);
   const navigation = useNavigation();
-  const {likeArtwork, unlikeArtwork} = useHandleUnlike();
+  const {likeArtwork, unlikeArtwork} = useArtworksLikes();
 
   useEffect(() => {
     setLiked(isLiked);

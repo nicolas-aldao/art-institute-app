@@ -6,12 +6,9 @@ import {ArtworkThumbail} from '../ArtworkThumbail/index';
 export const ArtworkThumbnailList = ({list}) => {
   const {likesArray} = useContext(ArtContext);
 
-  useEffect(() => {
-    console.log('in list value ', likesArray);
-  }, [likesArray]);
-
   return (
     <FlatList
+      showsHorizontalScrollIndicator={false}
       data={list?.data}
       renderItem={({item}) => {
         return (

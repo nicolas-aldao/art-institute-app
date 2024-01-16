@@ -10,7 +10,8 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ArtContext} from '../../../../App';
 import {COLORS} from '../../../constants';
-import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
+import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
+import {FullArtworkSkeleton} from '../../skeletons/FullArtworkSkeleton/index';
 import {
   StyledTitle,
   StyledAuthor,
@@ -37,13 +38,9 @@ export const FullArtwork: FC<FullArtworkProps> = ({
   isLiked,
 }) => {
   const [liked, setLiked] = useState(isLiked);
-  const {likeArtwork, unlikeArtwork} = useHandleUnlike();
-
+  const [isLoading, setIsLoading] = useState(true);
+  const {likeArtwork, unlikeArtwork} = useArtworksLikes();
   const {likesArray} = useContext(ArtContext);
-
-  useEffect(() => {
-    console.log('in full artwork value ', likesArray);
-  }, [likesArray]);
 
   useEffect(() => {
     setLiked(isLiked);
@@ -61,45 +58,56 @@ export const FullArtwork: FC<FullArtworkProps> = ({
     },
   });
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 2000);
+
   return (
     <>
-      <StyledTextContainer>
-        <StyledAuthor numberOfLines={1} ellipsizeMode="tail">
-          {author}
-        </StyledAuthor>
-        <StyledTitle numberOfLines={1} ellipsizeMode="tail">
-          {title}
-        </StyledTitle>
-        <StyledDescription numberOfLines={3} ellipsizeMode="tail">
-          {description}
-        </StyledDescription>
-      </StyledTextContainer>
-      <ImageBackground source={{uri: imageUrl}} style={styles.imageBackground}>
-        <View style={styles.innerContainer}></View>
-      </ImageBackground>
-      <StyledButtonContainer>
-        {liked ? (
-          <TouchableOpacity
-            onPress={() => {
-              setLiked(false);
-              unlikeArtwork(id);
-            }}>
-            <Text>
-              <Icon name="favorite" size={30} color={COLORS.LIKE} />
-            </Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              setLiked(true);
-              likeArtwork(id);
-            }}>
-            <Text>
-              <Icon name="favorite-border" size={30} color={COLORS.LIKE} />
-            </Text>
-          </TouchableOpacity>
-        )}
-      </StyledButtonContainer>
+      {isLoading && <FullArtworkSkeleton />}
+      {!isLoading && (
+        <>
+          <StyledTextContainer>
+            <StyledAuthor numberOfLines={1} ellipsizeMode="tail">
+              {author}
+            </StyledAuthor>
+            <StyledTitle numberOfLines={1} ellipsizeMode="tail">
+              {title}
+            </StyledTitle>
+            <StyledDescription numberOfLines={3} ellipsizeMode="tail">
+              {description}
+            </StyledDescription>
+          </StyledTextContainer>
+          <ImageBackground
+            source={{uri: imageUrl}}
+            style={styles.imageBackground}>
+            <View style={styles.innerContainer}></View>
+          </ImageBackground>
+          <StyledButtonContainer>
+            {liked ? (
+              <TouchableOpacity
+                onPress={() => {
+                  setLiked(false);
+                  unlikeArtwork(id);
+                }}>
+                <Text>
+                  <Icon name="favorite" size={30} color={COLORS.LIKE} />
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                onPress={() => {
+                  setLiked(true);
+                  likeArtwork(id);
+                }}>
+                <Text>
+                  <Icon name="favorite-border" size={30} color={COLORS.LIKE} />
+                </Text>
+              </TouchableOpacity>
+            )}
+          </StyledButtonContainer>
+        </>
+      )}
     </>
   );
 };

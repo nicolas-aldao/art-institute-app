@@ -2,7 +2,7 @@ import {useState, useContext, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ArtContext} from '../../App';
 
-export function useHandleUnlike() {
+export function useArtworksLikes() {
   const [refreshData, setRefreshData] = useState(false);
   const {setLikesArray} = useContext(ArtContext);
 
@@ -29,22 +29,12 @@ export function useHandleUnlike() {
       const arrayParsed = JSON.parse(artworkArray);
       const newArray = arrayParsed == null ? [id] : [...arrayParsed, id];
       await AsyncStorage.setItem('likesArray', JSON.stringify(newArray));
-      // setLikesArrayState(newArray);
       setLikesArray(newArray);
       setRefreshData(true);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const updateIdsList = async newIdsList => {
-  //   try {
-  //     setLikesArrayState(newIdsList);
-  //     await AsyncStorage.setItem('likesArray', JSON.stringify(newIdsList));
-  //   } catch (error) {
-  //     console.error('Error updating IDs list:', error);
-  //   }
-  // };
 
   const getArtworkFromLocalStorage = async () => {
     try {

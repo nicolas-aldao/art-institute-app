@@ -1,9 +1,9 @@
 import React from 'react';
+import {ViewSkeletonIcon} from '../StylesCommonSkeleton';
 import {
   ViewSkeletonContainer,
   ViewSkeletonText,
   ViewSkeletonSquare,
-  ViewSkeletonIcon,
 } from './StylesThumbailSkeleton';
 
 export const ThumbailSkeleton = () => {
