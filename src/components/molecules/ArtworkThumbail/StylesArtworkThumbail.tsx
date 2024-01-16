@@ -5,10 +5,11 @@ export const StyledContainer = styled.View`
 `;
 
 export const StyledTitle = styled.Text`
-  align-self: center;
-  font-size: 14px;
+  align-self: flex-start;
+  margin-left: 12px;
+  font-size: 18px;
   font-weight: 400;
-  max-width: 250px;
+  max-width: 290px;
 `;
 
 export const StyledImage = styled.Image`

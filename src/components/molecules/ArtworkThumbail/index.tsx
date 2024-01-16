@@ -41,7 +41,7 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
             id: id,
           });
         }}>
-        <StyledTitle numberOfLines={2} ellipsizeMode="tail">
+        <StyledTitle numberOfLines={1} ellipsizeMode="tail">
           {title}
         </StyledTitle>
 
