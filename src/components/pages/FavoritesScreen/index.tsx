@@ -9,7 +9,7 @@ export function FavoritesScreen() {
 
   return (
     <StyledView>
-      <StyledTitle>Here you can see your favorites artworks :)</StyledTitle>
+      <StyledTitle>Here you can see your favorites artworks 🌝</StyledTitle>
       {isLoading && <ThumbailSkeletonList />}
       {data && <ArtworkThumbnailList list={data} />}
     </StyledView>

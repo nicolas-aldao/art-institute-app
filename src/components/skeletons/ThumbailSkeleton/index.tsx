@@ -9,9 +9,9 @@ import {
 export const ThumbailSkeleton = () => {
   return (
     <ViewSkeletonContainer>
-      <ViewSkeletonText></ViewSkeletonText>
-      <ViewSkeletonSquare></ViewSkeletonSquare>
-      <ViewSkeletonIcon></ViewSkeletonIcon>
+      <ViewSkeletonText />
+      <ViewSkeletonSquare />
+      <ViewSkeletonIcon />
     </ViewSkeletonContainer>
   );
 };

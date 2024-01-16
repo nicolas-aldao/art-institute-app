@@ -1,10 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {useFetchArtworks} from '../../../hooks/useFetchArtworks';
 import {FavoriteButton} from '../../atoms/FavoritesButton/index';
 import {Header} from '../../molecules/Header/index';
-import {ThumbailSkeletonList} from '../../skeletons/Lists/ThumbailSkeletonList/index';
 import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';
+import {ThumbailSkeletonList} from '../../skeletons/Lists/ThumbailSkeletonList/index';
 import {
   StyledContainerView,
   StyledSafeAreaView,

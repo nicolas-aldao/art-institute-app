@@ -1,9 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Button, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {COLORS} from '../../../constants';
-import {handleLike} from '../../../utils/handleLike';
 import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
 import {
   StyledImage,
@@ -11,6 +8,8 @@ import {
   StyledLikeButtonContainer,
   StyledContainer,
 } from './StylesArtworkThumbail';
+import {DislikeButton} from '../../atoms/DislikeButton/index';
+import {LikeButton} from '../../atoms/LikeButton/index';
 
 export type ArtworkThumbailProps = {
   id: string;
@@ -52,25 +51,19 @@ export const ArtworkThumbail: FC<ArtworkThumbailProps> = ({
         />
         <StyledLikeButtonContainer>
           {liked ? (
-            <TouchableOpacity
+            <DislikeButton
               onPress={() => {
                 setLiked(false);
                 unlikeArtwork(id);
-              }}>
-              <Text>
-                <Icon name="favorite" size={30} color={COLORS.LIKE} />
-              </Text>
-            </TouchableOpacity>
+              }}
+            />
           ) : (
-            <TouchableOpacity
+            <LikeButton
               onPress={() => {
                 setLiked(true);
                 likeArtwork(id);
-              }}>
-              <Text>
-                <Icon name="favorite-border" size={30} color={COLORS.LIKE} />
-              </Text>
-            </TouchableOpacity>
+              }}
+            />
           )}
         </StyledLikeButtonContainer>
       </TouchableOpacity>

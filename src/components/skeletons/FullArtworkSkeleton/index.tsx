@@ -11,11 +11,11 @@ import {
 export const FullArtworkSkeleton = () => {
   return (
     <ViewSkeletonContainer>
-      <ViewSkeletonSquare></ViewSkeletonSquare>
-      <ViewSkeletonFirstSubtitle></ViewSkeletonFirstSubtitle>
-      <ViewSkeletonSecondSubtitle></ViewSkeletonSecondSubtitle>
-      <ViewSkeletonThreeSubtitle></ViewSkeletonThreeSubtitle>
-      <ViewSkeletonIcon></ViewSkeletonIcon>
+      <ViewSkeletonSquare />
+      <ViewSkeletonFirstSubtitle />
+      <ViewSkeletonSecondSubtitle />
+      <ViewSkeletonThreeSubtitle />
+      <ViewSkeletonIcon />
     </ViewSkeletonContainer>
   );
 };

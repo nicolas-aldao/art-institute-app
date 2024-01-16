@@ -1,9 +1,13 @@
-import React, {useContext} from 'react';
+import React, {FC, useContext} from 'react';
 import {FlatList} from 'react-native';
 import {ArtContext} from '../../../../App';
 import {ArtworkThumbail} from '../ArtworkThumbail/index';
 
-export const ArtworkThumbnailList = ({list}) => {
+export type ArtworkThumbnailListProps = {
+  list: any;
+};
+
+export const ArtworkThumbnailList: FC<ArtworkThumbnailListProps> = ({list}) => {
   const {likesArray} = useContext(ArtContext);
 
   return (

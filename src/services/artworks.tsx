@@ -13,8 +13,6 @@ export const fetchArtwork = id => {
 };
 export const fetchArtworksByIdsArray = arrayList => {
   const idsString = arrayList.join(',');
-  console.log('parseada ', idsString);
-  console.log(`https://api.artic.edu/api/v1/artworks?ids=${idsString}`);
   return axios
     .get(`https://api.artic.edu/api/v1/artworks?ids=${idsString}`)
     .then((res: {data: any}) => res.data);

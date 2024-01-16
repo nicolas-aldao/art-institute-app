@@ -12,8 +12,6 @@ export const useFetchArtworksByIdsArray = () => {
       try {
         const value = await AsyncStorage.getItem('likesArray');
         if (value !== null) {
-          // We have data!!
-          console.log('we have data: ', value);
           setArrayResult(JSON.parse(value));
         }
       } catch (error) {

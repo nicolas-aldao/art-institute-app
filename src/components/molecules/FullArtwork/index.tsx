@@ -1,17 +1,9 @@
-import React, {FC, useState, useEffect, useContext} from 'react';
-import {
-  Button,
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {ArtContext} from '../../../../App';
-import {COLORS} from '../../../constants';
+import React, {FC, useState, useEffect} from 'react';
+import {StyleSheet, View, ImageBackground} from 'react-native';
 import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
 import {FullArtworkSkeleton} from '../../skeletons/FullArtworkSkeleton/index';
+import {LikeButton} from '../../atoms/LikeButton/index';
+import {DislikeButton} from '../../atoms/DislikeButton/index';
 import {
   StyledTitle,
   StyledAuthor,
@@ -40,7 +32,6 @@ export const FullArtwork: FC<FullArtworkProps> = ({
   const [liked, setLiked] = useState(isLiked);
   const [isLoading, setIsLoading] = useState(true);
   const {likeArtwork, unlikeArtwork} = useArtworksLikes();
-  const {likesArray} = useContext(ArtContext);
 
   useEffect(() => {
     setLiked(isLiked);
@@ -85,25 +76,19 @@ export const FullArtwork: FC<FullArtworkProps> = ({
           </ImageBackground>
           <StyledButtonContainer>
             {liked ? (
-              <TouchableOpacity
+              <DislikeButton
                 onPress={() => {
                   setLiked(false);
                   unlikeArtwork(id);
-                }}>
-                <Text>
-                  <Icon name="favorite" size={30} color={COLORS.LIKE} />
-                </Text>
-              </TouchableOpacity>
+                }}
+              />
             ) : (
-              <TouchableOpacity
+              <LikeButton
                 onPress={() => {
                   setLiked(true);
                   likeArtwork(id);
-                }}>
-                <Text>
-                  <Icon name="favorite-border" size={30} color={COLORS.LIKE} />
-                </Text>
-              </TouchableOpacity>
+                }}
+              />
             )}
           </StyledButtonContainer>
         </>

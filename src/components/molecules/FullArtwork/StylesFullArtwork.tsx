@@ -36,13 +36,6 @@ export const StyledImage = styled.Image`
   min-height: 400px;
 `;
 
-export const StyledView = styled.View`
-  /* border: solid red 10px;
-  z-index: 4;
-  width: 100vw;
-  height: 400px; */
-`;
-
 export const StyledButtonContainer = styled.View`
   padding: 15px;
 `;
