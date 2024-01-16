@@ -1,4 +1,4 @@
-import React, {FC, useState, useEffect} from 'react';
+import React, {FC, useState, useEffect, useContext} from 'react';
 import {
   Button,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {ArtContext} from '../../../../App';
 import {COLORS} from '../../../constants';
 import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
 import {
@@ -37,6 +38,12 @@ export const FullArtwork: FC<FullArtworkProps> = ({
 }) => {
   const [liked, setLiked] = useState(isLiked);
   const {likeArtwork, unlikeArtwork} = useHandleUnlike();
+
+  const {likesArray} = useContext(ArtContext);
+
+  useEffect(() => {
+    console.log('in full artwork value ', likesArray);
+  }, [likesArray]);
 
   useEffect(() => {
     setLiked(isLiked);

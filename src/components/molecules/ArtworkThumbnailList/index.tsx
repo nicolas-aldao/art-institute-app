@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {FlatList} from 'react-native';
+import {ArtContext} from '../../../../App';
 import {ArtworkThumbail} from '../ArtworkThumbail/index';
-import {useHandleUnlike} from '../../../hooks/useHandleUnlike';
 
 export const ArtworkThumbnailList = ({list}) => {
-  const {likesArrayState} = useHandleUnlike();
+  const {likesArray} = useContext(ArtContext);
+
+  useEffect(() => {
+    console.log('in list value ', likesArray);
+  }, [likesArray]);
 
   return (
     <FlatList
@@ -16,7 +20,7 @@ export const ArtworkThumbnailList = ({list}) => {
               id={item.id}
               title={`${item.id} - ${item.title}`}
               imageUrl={`https://www.artic.edu/iiif/2/${item?.image_id}/full/843,/0/default.jpg`}
-              isLiked={likesArrayState?.includes(item.id)}
+              isLiked={likesArray?.includes(item.id)}
             />
           </>
         );
