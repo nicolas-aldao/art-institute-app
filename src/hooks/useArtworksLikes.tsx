@@ -42,7 +42,7 @@ export function useArtworksLikes() {
       setLikesArray(JSON.parse(stringLikes));
       setRefreshData(false);
     } catch (error) {
-      console.log('retrieveData', error);
+      console.log(error);
     }
   };
 

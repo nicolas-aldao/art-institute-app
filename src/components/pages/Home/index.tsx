@@ -18,7 +18,7 @@ export function HomeScreen() {
     <>
       <StyledContainerView>
         <StyledSafeAreaView>
-          <FavoriteButton />
+          {!errorMessage && <FavoriteButton />}
           <StyledView>
             <Header />
             {isLoading && <ThumbailSkeletonList />}
