@@ -39,3 +39,14 @@ export const StyledImage = styled.Image`
 export const StyledButtonContainer = styled.View`
   padding: 15px;
 `;
+
+export const StyledImageBackground = styled.ImageBackground`
+  width: 100vw;
+  height: 500px;
+  border-radius: 10px;
+`;
+
+export const StyledBlackMaskView = styled.View`
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+`;

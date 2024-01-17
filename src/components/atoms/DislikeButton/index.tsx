@@ -11,7 +11,7 @@ export const DislikeButton: FC<DislikeButtonProps> = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Text>
-        <Icon name="favorite" size={30} color={COLORS.LIKE} />;
+        <Icon name="favorite" size={30} color={COLORS.LIKE} />
       </Text>
     </TouchableOpacity>
   );

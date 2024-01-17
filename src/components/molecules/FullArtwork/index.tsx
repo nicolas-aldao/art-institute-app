@@ -1,5 +1,4 @@
 import React, {FC, useState, useEffect} from 'react';
-import {StyleSheet, View, ImageBackground} from 'react-native';
 import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
 import {FullArtworkSkeleton} from '../../skeletons/FullArtworkSkeleton/index';
 import {LikeButton} from '../../atoms/LikeButton/index';
@@ -10,6 +9,8 @@ import {
   StyledDescription,
   StyledTextContainer,
   StyledButtonContainer,
+  StyledImageBackground,
+  StyledBlackMaskView,
 } from './StylesFullArtwork';
 
 export type FullArtworkProps = {
@@ -37,18 +38,6 @@ export const FullArtwork: FC<FullArtworkProps> = ({
     setLiked(isLiked);
   }, [isLiked]);
 
-  const styles = StyleSheet.create({
-    imageBackground: {
-      width: '100vw',
-      height: 500,
-      borderRadius: '10px',
-    },
-    innerContainer: {
-      flex: 1,
-      backgroundColor: 'rgba(0,0,0, 0.40)',
-    },
-  });
-
   setTimeout(() => {
     setIsLoading(false);
   }, 1500);
@@ -69,11 +58,9 @@ export const FullArtwork: FC<FullArtworkProps> = ({
               {description}
             </StyledDescription>
           </StyledTextContainer>
-          <ImageBackground
-            source={{uri: imageUrl}}
-            style={styles.imageBackground}>
-            <View style={styles.innerContainer}></View>
-          </ImageBackground>
+          <StyledImageBackground source={{uri: imageUrl}}>
+            <StyledBlackMaskView />
+          </StyledImageBackground>
           <StyledButtonContainer>
             {liked ? (
               <DislikeButton
