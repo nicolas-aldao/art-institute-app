@@ -9,9 +9,11 @@ import {
   StyledSafeAreaView,
   StyledView,
 } from './StylesHome';
+import {EmptyState} from '../../molecules/EmptyState/index';
 
 export function HomeScreen() {
-  const {data, isLoading} = useFetchArtworks();
+  const {data, isLoading, errorMessage} = useFetchArtworks();
+
   return (
     <>
       <StyledContainerView>
@@ -20,7 +22,8 @@ export function HomeScreen() {
           <StyledView>
             <Header />
             {isLoading && <ThumbailSkeletonList />}
-            {data && <ArtworkThumbnailList list={data} />}
+            {data?.data?.length > 0 && <ArtworkThumbnailList list={data} />}
+            {errorMessage && <EmptyState />}
           </StyledView>
         </StyledSafeAreaView>
       </StyledContainerView>

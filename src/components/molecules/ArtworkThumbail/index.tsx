@@ -2,14 +2,14 @@ import React, {FC, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
+import {LikeButton} from '../../atoms/LikeButton/index';
+import {DislikeButton} from '../../atoms/DislikeButton/index';
 import {
   StyledImage,
   StyledTitle,
   StyledLikeButtonContainer,
   StyledContainer,
 } from './StylesArtworkThumbail';
-import {DislikeButton} from '../../atoms/DislikeButton/index';
-import {LikeButton} from '../../atoms/LikeButton/index';
 
 export type ArtworkThumbailProps = {
   id: string;
