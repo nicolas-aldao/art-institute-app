@@ -4,7 +4,7 @@ import {StyledView, StyledTitle} from './StylesFavoritesScreen';
 import {ThumbailSkeletonList} from '../../skeletons/Lists/ThumbailSkeletonList/index';
 import {ArtworkThumbnailList} from '../../molecules/ArtworkThumbnailList/index';
 
-export function FavoritesScreen() {
+export const FavoritesScreen = () => {
   const {data, isLoading} = useFetchArtworksByIdsArray();
 
   return (
@@ -14,4 +14,4 @@ export function FavoritesScreen() {
       {data && <ArtworkThumbnailList list={data} />}
     </StyledView>
   );
-}
+};

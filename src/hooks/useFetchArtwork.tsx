@@ -7,7 +7,7 @@ export const useFetchArtwork = id => {
 
   useEffect(() => {
     fetchArtwork(id)
-      .then((artwork: SetStateAction<any>) => setData(artwork))
+      .then((artwork: SetStateAction<any>) => setData(artwork.data))
       .finally(() => setIsLoading(false));
   }, []);
 

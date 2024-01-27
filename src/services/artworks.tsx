@@ -1,19 +1,18 @@
 import axios from 'axios';
+import {API_URL} from '../constants';
 
 export const fetchArtworks = () => {
-  return axios
-    .get('https://api.artic.edu/api/v1/artworks')
-    .then((res: {data: any}) => res.data);
+  return axios.get(`${API_URL}/artworks`).then((res: {data: any}) => res.data);
 };
 
-export const fetchArtwork = id => {
+export const fetchArtwork = (id: string) => {
   return axios
-    .get(`https://api.artic.edu/api/v1/artworks/${id}`)
+    .get(`${API_URL}/artworks/${id}`)
     .then((res: {data: any}) => res.data);
 };
-export const fetchArtworksByIdsArray = arrayList => {
+export const fetchArtworksByIdsArray = (arrayList: number[]) => {
   const idsString = arrayList.join(',');
   return axios
-    .get(`https://api.artic.edu/api/v1/artworks?ids=${idsString}`)
+    .get(`${API_URL}/artworks?ids=${idsString}`)
     .then((res: {data: any}) => res.data);
 };

@@ -1,8 +1,8 @@
 import React, {FC, useState, useEffect} from 'react';
-import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
+// import {useArtworksLikes} from '../../../hooks/useArtworksLikes';
 import {FullArtworkSkeleton} from '../../skeletons/FullArtworkSkeleton/index';
-import {LikeButton} from '../../atoms/LikeButton/index';
-import {DislikeButton} from '../../atoms/DislikeButton/index';
+// import {LikeButton} from '../../atoms/LikeButton/index';
+// import {DislikeButton} from '../../atoms/DislikeButton/index';
 import {
   StyledTitle,
   StyledAuthor,
@@ -12,6 +12,7 @@ import {
   StyledImageBackground,
   StyledBlackMaskView,
 } from './StylesFullArtwork';
+import {LikeButtonContainer} from '../LikeButtonsContainer/index';
 
 export type FullArtworkProps = {
   id: string;
@@ -32,7 +33,7 @@ export const FullArtwork: FC<FullArtworkProps> = ({
 }) => {
   const [liked, setLiked] = useState(isLiked);
   const [isLoading, setIsLoading] = useState(true);
-  const {likeArtwork, unlikeArtwork} = useArtworksLikes();
+  // const {likeArtwork, unlikeArtwork} = useArtworksLikes();
 
   useEffect(() => {
     setLiked(isLiked);
@@ -62,7 +63,8 @@ export const FullArtwork: FC<FullArtworkProps> = ({
             <StyledBlackMaskView />
           </StyledImageBackground>
           <StyledButtonContainer>
-            {liked ? (
+            {/* TODO: complete this refactor */}
+            {/* {liked ? (
               <DislikeButton
                 onPress={() => {
                   setLiked(false);
@@ -76,7 +78,8 @@ export const FullArtwork: FC<FullArtworkProps> = ({
                   likeArtwork(id);
                 }}
               />
-            )}
+            )} */}
+            <LikeButtonContainer id={id} isLiked={isLiked} />
           </StyledButtonContainer>
         </>
       )}

@@ -1,36 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {generateImageUrl} from '../../../constants';
 import {useFetchArtwork} from '../../../hooks/useFetchArtwork';
+import {useGetLikesFromStorage} from '../../../hooks/useGetLikesFromStorage';
 import {FullArtwork} from '../../molecules/FullArtwork/index';
 
-export function ArtworkDetailScreen({route}) {
+export const ArtworkDetailScreen = ({route}) => {
   const {id} = route.params;
   const {data} = useFetchArtwork(id);
-  const [likesArrayState, setLikesArrayState] = useState('');
-
-  useEffect(() => {
-    let retrieveData = async () => {
-      try {
-        let stringLikes = await AsyncStorage.getItem('likesArray');
-        setLikesArrayState(stringLikes);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    retrieveData();
-  }, []);
+  const {likesString} = useGetLikesFromStorage();
 
   return (
     <View>
       <FullArtwork
-        id={data?.data?.id}
-        title={data?.data?.title}
-        author={data?.data?.artist_title}
-        description={data?.data?.medium_display}
-        imageUrl={`https://www.artic.edu/iiif/2/${data?.data?.image_id}/full/843,/0/default.jpg`}
-        isLiked={likesArrayState?.includes(id)}
+        id={data?.id}
+        title={data?.title}
+        author={data?.artist_title}
+        description={data?.medium_display}
+        imageUrl={generateImageUrl(data?.image_id)}
+        isLiked={likesString?.includes(id)}
       />
     </View>
   );
-}
+};

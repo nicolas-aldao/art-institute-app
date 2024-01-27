@@ -1,5 +1,6 @@
 import React, {FC, useContext} from 'react';
 import {FlatList} from 'react-native';
+import {generateImageUrl} from '../../../constants';
 import {ArtContext} from '../../../../App';
 import {ArtworkThumbail} from '../ArtworkThumbail/index';
 
@@ -16,14 +17,12 @@ export const ArtworkThumbnailList: FC<ArtworkThumbnailListProps> = ({list}) => {
       data={list?.data}
       renderItem={({item}) => {
         return (
-          <>
-            <ArtworkThumbail
-              id={item.id}
-              title={item.title}
-              imageUrl={`https://www.artic.edu/iiif/2/${item?.image_id}/full/843,/0/default.jpg`}
-              isLiked={likesArray?.includes(item.id)}
-            />
-          </>
+          <ArtworkThumbail
+            id={item.id}
+            title={item.title}
+            imageUrl={generateImageUrl(item?.image_id)}
+            isLiked={likesArray?.includes(item.id)}
+          />
         );
       }}
     />

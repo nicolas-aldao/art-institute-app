@@ -23,10 +23,13 @@ export const useFetchArtworksByIdsArray = () => {
 
   useEffect(() => {
     if (arrayResult && arrayResult.length > 0) {
+      setIsLoading(true);
       fetchArtworksByIdsArray(arrayResult)
         .then((artworks: SetStateAction<any[]>) => setData(artworks))
         .catch((e: any) => console.log(e))
         .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
   }, [arrayResult]);
 
