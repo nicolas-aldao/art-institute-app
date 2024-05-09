@@ -1,14 +1,14 @@
-import React from 'react';
-import {View} from 'react-native';
-import {generateImageUrl} from '../../../constants';
-import {useFetchArtwork} from '../../../hooks/useFetchArtwork';
-import {useGetLikesFromStorage} from '../../../hooks/useGetLikesFromStorage';
-import {FullArtwork} from '../../molecules/FullArtwork/index';
+import React, { useContext } from 'react';
+import { View } from 'react-native';
+import { generateImageUrl } from '../../../constants';
+import { useFetchArtwork } from '../../../hooks/useFetchArtwork';
+import { FullArtwork } from '../../molecules/FullArtwork/index';
+import { ArtContext } from '../../../../App';
 
-export const ArtworkDetailScreen = ({route}) => {
-  const {id} = route.params;
-  const {data} = useFetchArtwork(id);
-  const {likesString} = useGetLikesFromStorage();
+export const ArtworkDetailScreen = ({ route }) => {
+  const { id } = route.params;
+  const { data } = useFetchArtwork(id);
+  const { likesArray } = useContext(ArtContext);
 
   return (
     <View>
@@ -18,7 +18,7 @@ export const ArtworkDetailScreen = ({route}) => {
         author={data?.artist_title}
         description={data?.medium_display}
         imageUrl={generateImageUrl(data?.image_id)}
-        isLiked={likesString?.includes(id)}
+        isLiked={likesArray?.includes(id)}
       />
     </View>
   );

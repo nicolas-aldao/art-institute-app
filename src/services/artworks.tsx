@@ -1,18 +1,19 @@
 import axios from 'axios';
 import {API_URL} from '../constants';
 
-export const fetchArtworks = () => {
-  return axios.get(`${API_URL}/artworks`).then((res: {data: any}) => res.data);
+export const fetchArtworks = async () => {
+  return await axios.get(`${API_URL}/artworks`).then((res: {data: any}) => res.data);
 };
 
-export const fetchArtwork = (id: string) => {
-  return axios
+export const fetchArtwork = async (id: string) => {
+  return await axios
     .get(`${API_URL}/artworks/${id}`)
     .then((res: {data: any}) => res.data);
 };
-export const fetchArtworksByIdsArray = (arrayList: number[]) => {
+export const fetchArtworksByIdsArray = async (arrayList: number[]) => {
+  console.log('llamada')
   const idsString = arrayList.join(',');
-  return axios
+  return await axios
     .get(`${API_URL}/artworks?ids=${idsString}`)
     .then((res: {data: any}) => res.data);
 };

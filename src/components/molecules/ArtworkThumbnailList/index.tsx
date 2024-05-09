@@ -14,7 +14,7 @@ export const ArtworkThumbnailList: FC<ArtworkThumbnailListProps> = ({list}) => {
   return (
     <FlatList
       showsVerticalScrollIndicator={false}
-      data={list?.data}
+      data={list}
       renderItem={({item}) => {
         return (
           <ArtworkThumbail

@@ -5,26 +5,33 @@
  * @format
  */
 
-import React, {createContext, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen} from './src/components/pages/Home/index';
-import {ArtworkDetailScreen} from './src/components/pages/ArtworkDetail/index';
-import {FavoritesScreen} from './src/components/pages/FavoritesScreen/index';
+import React, { createContext, useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './src/components/pages/Home/index';
+import { ArtworkDetailScreen } from './src/components/pages/ArtworkDetail/index';
+import { FavoritesScreen } from './src/components/pages/FavoritesScreen/index';
+import { useGetSetLikesFromStorage } from './src/hooks/useGetSetLikesFromStorage';
 
 const Stack = createNativeStackNavigator();
 export const ArtContext = createContext([]);
 
 function App(): React.JSX.Element {
-  const [likesArray, setLikesArray] = useState([]);
+  const { likesArrayFromStorage } = useGetSetLikesFromStorage();
+  const [likesArray, setLikesArray] = useState<string[]>([])
+
+  useEffect(() => {
+    setLikesArray(likesArrayFromStorage);
+  }, [likesArrayFromStorage])
+
   return (
-    <ArtContext.Provider value={{likesArray, setLikesArray}}>
+    <ArtContext.Provider value={{ likesArray, setLikesArray }}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="ArtworkDetail"

@@ -1,5 +1,5 @@
-import {SetStateAction, useEffect, useState} from 'react';
-import {fetchArtworks} from '../services/artworks';
+import { SetStateAction, useEffect, useState } from 'react';
+import { fetchArtworks } from '../services/artworks';
 
 export const useFetchArtworks = () => {
   const [data, setData] = useState<any[]>([]);
@@ -13,5 +13,5 @@ export const useFetchArtworks = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  return {data, isLoading, errorMessage};
+  return { data, isLoading, errorMessage };
 };

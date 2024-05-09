@@ -63,23 +63,7 @@ export const FullArtwork: FC<FullArtworkProps> = ({
             <StyledBlackMaskView />
           </StyledImageBackground>
           <StyledButtonContainer>
-            {/* TODO: complete this refactor */}
-            {/* {liked ? (
-              <DislikeButton
-                onPress={() => {
-                  setLiked(false);
-                  unlikeArtwork(id);
-                }}
-              />
-            ) : (
-              <LikeButton
-                onPress={() => {
-                  setLiked(true);
-                  likeArtwork(id);
-                }}
-              />
-            )} */}
-            <LikeButtonContainer id={id} isLiked={isLiked} />
+            <LikeButtonContainer id={id} isLiked={liked} />
           </StyledButtonContainer>
         </>
       )}
